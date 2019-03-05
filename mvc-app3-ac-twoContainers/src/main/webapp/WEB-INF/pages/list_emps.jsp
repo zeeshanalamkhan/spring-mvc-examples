@@ -1,4 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<h1>
+	<b><u>EMPLOYEE LIST</u></b>
+</h1>
 <table border="1" bgcolor="red">
 	<tr bgcolor="#00FF00">
 		<th>ENO</th>
