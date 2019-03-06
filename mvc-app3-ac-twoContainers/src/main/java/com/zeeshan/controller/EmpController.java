@@ -11,13 +11,16 @@ import org.springframework.web.servlet.mvc.AbstractController;
 import com.zeeshan.dto.EmpDTO;
 import com.zeeshan.service.EmpService;
 
+import lombok.Data;
+
+@Data
 public class EmpController extends AbstractController {
 
 	private EmpService service;
 
-	public void setService(EmpService service) {
+	/*public void setService(EmpService service) {
 		this.service = service;
-	}
+	}*/
 
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response)

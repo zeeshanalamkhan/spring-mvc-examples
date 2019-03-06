@@ -9,15 +9,18 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.zeeshan.bo.EmpBO;
 
+import lombok.Data;
+
+@Data
 public class EmpDAOImpl implements EmpDAO {
 
 	private static final String GET_ALL_EMP_DETAILS = "SELECT EMPNO, ENAME, JOB, SAL FROM EMP";
 
 	private JdbcTemplate jt;
 
-	public void setJt(JdbcTemplate jt) {
+	/*public void setJt(JdbcTemplate jt) {
 		this.jt = jt;
-	}
+	}*/
 
 	@Override
 	public List<EmpBO> retrieveAllEmps() {

@@ -7,13 +7,16 @@ import com.zeeshan.bo.EmpBO;
 import com.zeeshan.dao.EmpDAO;
 import com.zeeshan.dto.EmpDTO;
 
+import lombok.Data;
+
+@Data
 public class EmpServiceImpl implements EmpService {
 
 	private EmpDAO dao;
 
-	public void setDao(EmpDAO dao) {
+/*	public void setDao(EmpDAO dao) {
 		this.dao = dao;
-	}
+	}*/
 
 	@Override
 	public List<EmpDTO> getAllEmps() {
