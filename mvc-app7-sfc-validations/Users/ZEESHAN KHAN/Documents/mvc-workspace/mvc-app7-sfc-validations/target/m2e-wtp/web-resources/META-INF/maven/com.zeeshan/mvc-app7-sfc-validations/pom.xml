@@ -3,12 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zeeshan</groupId>
-	<artifactId>mvc-app3-acc-emp-search-app</artifactId>
+	<artifactId>mvc-app7-sfc-validations</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mvc-app5-acc-emp-search-jndi Maven Webapp</name>
+	<name>mvc-app7-sfc-validations Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -65,9 +64,11 @@
 		</dependency>
 
 	</dependencies>
+
 	<build>
-		<finalName>mvc-app5-acc-emp-search-jndi</finalName>
+		<finalName>mvc-app7-sfc-validations</finalName>
 	</build>
+
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
