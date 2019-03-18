@@ -6,7 +6,7 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename"
-			value="com/zeeshan/validations/application" />
+			value="classpath:src/main/resources/application" />
 	</bean>
 	<bean id="stValidator"
 		class="com.zeeshan.validations.StudentInsertValidator" />
