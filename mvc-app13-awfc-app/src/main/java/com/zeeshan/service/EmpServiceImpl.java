@@ -18,8 +18,8 @@ import lombok.Data;
  */
 
 @Data
-/*public class EmpServiceImpl implements EmpService {*/
-public class EmpServiceImpl implements EmpService{
+/* public class EmpServiceImpl implements EmpService { */
+public class EmpServiceImpl implements EmpService {
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -34,7 +34,8 @@ public class EmpServiceImpl implements EmpService{
 		List<EmpBO> listBO = dao.getAllEmp();
 		List<EmpDTO> listDTO = new ArrayList<EmpDTO>();
 		for (EmpBO bo : listBO) {
-			EmpDTO dto = new EmpDTO(bo.getEmpNo(), bo.getEname(), bo.getJob(), bo.getSalary());
+			EmpDTO dto = new EmpDTO(bo.getEmpNo(), bo.getEname(), bo.getJob(), bo.getMgr(), bo.getHireDate(),
+					bo.getSalary(), bo.getComm(), bo.getDeptNo());
 			listDTO.add(dto);
 		}
 		return listDTO;
@@ -48,7 +49,8 @@ public class EmpServiceImpl implements EmpService{
 	@Override
 	public String registerEmp(EmpDTO dto) {
 
-		EmpBO bo = new EmpBO(dto.getEmpNo(), dto.getEname(), dto.getJob(), dto.getSalary());
+		EmpBO bo = new EmpBO(dto.getEmpNo(), dto.getEname(), dto.getJob(), dto.getMgr(), dto.getHireDate(),
+				dto.getSalary(), dto.getComm(), dto.getDeptNo());
 		int count = dao.registerEmp(bo);
 		if (count != 0) {
 			return "Emp with empNo: " + bo.getEmpNo() + " registered successfully...";
