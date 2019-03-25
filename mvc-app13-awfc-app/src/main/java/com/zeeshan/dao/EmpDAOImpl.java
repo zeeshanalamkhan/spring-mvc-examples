@@ -21,8 +21,8 @@ import lombok.Data;
 @Data
 public class EmpDAOImpl implements EmpDAO {
 
-	private static final String GET_ALL_EMPS = "SELECT EMPNO, ENAME, JOB, SAL FROM EMP";
-	private static final String INSERT_EMP = "INSERT INTO EMP(EMPNO,ENAME, JOB, SAL)VALUES(?,?,?,?)";
+	private static final String GET_ALL_EMPS = "SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO FROM EMP";
+	private static final String INSERT_EMP = "INSERT INTO EMP(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)VALUES(?,?,?,?,?,?,?,?)";
 
 	private JdbcTemplate jt;
 
@@ -45,8 +45,11 @@ public class EmpDAOImpl implements EmpDAO {
 	 */
 	@Override
 	public Integer registerEmp(EmpBO bo) {
-		
-		int count = jt.update(INSERT_EMP, bo.getEmpNo(), bo.getEname(), bo.getJob(), bo.getSalary());
+
+		/* EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO */
+
+		int count = jt.update(INSERT_EMP, bo.getEmpNo(), bo.getEname(), bo.getJob(), bo.getMgr(), bo.getHireDate(),
+				bo.getSalary(), bo.getComm(), bo.getDeptNo());
 		return count;
 	}
 
@@ -55,10 +58,11 @@ public class EmpDAOImpl implements EmpDAO {
 		@Override
 		public EmpBO mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-			EmpBO bo = new EmpBO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+			EmpBO bo = new EmpBO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDate(5),
+					rs.getInt(6), rs.getInt(7), rs.getInt(8));
 
 			return bo;
 		}
-		
+
 	}
 }
