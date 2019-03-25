@@ -27,4 +27,5 @@ public class EmpGetAllEmpController extends SimpleFormController {
 
 		return new ModelAndView("listEmps", "empList", listDTO);
 	}
+
 }
