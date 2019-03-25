@@ -11,11 +11,11 @@
 			Employees</a>
 	</h2>
 	</br>
-	HIREDATE: <form:input path="hireDate" />
+	COMM: <form:input path="comm" />
 	</br>
-	SALARY: <form:input path="salary" />
+	DEPTNO: <form:input path="deptNo" />
 	</br>
-	<input type="submit" value="Previous" name="_target0" />
-	<input type="submit" value="NEXT" name="_target2" />
+	<input type="submit" value="Previous" name="_target1" />
+	<input type="submit" value="Finish" name="_finish" />
 	<input type="submit" value="Cancel" name="_cancel" />
 </form:form>
