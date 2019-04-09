@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="surl"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.htm">pvc1</prop>
+				<prop key="listStudents.htm">stlist</prop>
+				<prop key="insert.htm">stIns</prop>
+				<prop key="delete.htm">stDel</prop>
+				<prop key="update.htm">stUpd</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename"
+			value="com/zeeshan/validator/application" />
+	</bean>
+
+	<bean id="stValidator"
+		class="com.zeeshan.validator.StudentValidator" />
+
+	<bean id="pvc1"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="home" />
+	</bean>
+
+	<bean id="stlist"
+		class="com.zeeshan.controller.ListStudentController">
+		<property name="service" ref="stService" />
+	</bean>
+	<bean id="stIns"
+		class="com.zeeshan.controller.StudentInsertController">
+		<property name="service" ref="stService" />
+		<property name="formView" value="insert_student" />
+		<property name="successView" value="insert_result" />
+		<property name="commandClass"
+			value="com.zeeshan.command.StudentCommand" />
+		<property name="commandName" value="stCmd" />
+		<property name="validator" ref="stValidator" />
+		<property name="sessionForm" value="true" />
+	</bean>
+
+	<bean id="stDel"
+		class="com.zeeshan.controller.StudentDeleteController">
+		<property name="service" ref="stService" />
+	</bean>
+
+	<bean id="stUpd"
+		class="com.zeeshan.controller.StudentUpdateController">
+		<property name="service" ref="stService" />
+		<property name="formView" value="edit_student" />
+		<property name="successView" value="edit_result" />
+		<property name="commandClass"
+			value="com.zeeshan.command.StudentCommand" />
+		<property name="commandName" value="stCmd" />
+		<property name="validator" ref="stValidator" />
+		<property name="sessionForm" value="true" />
+	</bean>
+
+	<bean id="vr"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
