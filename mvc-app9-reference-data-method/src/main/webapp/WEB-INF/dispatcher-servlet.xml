@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="src"
+		class="com.zeeshan.controller.StudentRegistrationController">
+		<property name="formView" value="register" />
+		<property name="validator" ref="stValidator" />
+		<property name="successView" value="register_result" />
+		<property name="commandClass"
+			value="com.zeeshan.command.RegistrationCommand" />
+		<property name="commandName" value="regCmd" />
+		<property name="sessionForm" value="true" />
+	</bean>
+
+	<bean id="surl"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="register.htm">src</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="stValidator"
+		class="com.zeeshan.validations.StCommandValidator" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename"
+			value="com/zeeshan/validations/stCmdValidationsErrors" />
+
+	</bean>
+
+	<bean id="vr"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>

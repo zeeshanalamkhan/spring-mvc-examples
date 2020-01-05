@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="vhc" class="com.zeeshan.controller.ViewHomeController" />
+	<bean id="wc" class="com.zeeshan.controller.WIshController" />
+	<!-- <bean id="ufc" class="org.springframework.web.servlet.mvc.UrlFilenameViewController" 
+		/> -->
+	<bean id="surl"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.htm">vhc</prop>
+				<prop key="wish.htm">wc</prop>
+				<!-- <prop key="AboutUs.htm">ufc</prop> <prop key="ContactUs.htm">ufc</prop> -->
+				<prop key="AboutUs.htm">pvc1</prop>
+				<prop key="ContactUs.htm">pvc2</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="pvc1"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="AboutUs" />
+	</bean>
+	<bean id="pvc2"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="ContactUs" />
+	</bean>
+
+	<bean id="vr"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
